@@ -1,27 +1,73 @@
-## 项目介绍
-EITFWH-multi-node是一款专门用于气动声学领域的计算软件，基于Ffowcs Williams-Hawkings (FW-H)方程设计，用于模拟非定常流动产生的声波传播情况。
-该软件适用于计算由不同类型声源（单极子源、偶极子源、四极子源）引发的声波，尤其是在流动噪声的数值模拟中具有广泛的应用。
+# EITFWH-multi-node
 
-目前FW-H核心求解器全部基于C++开发，支持MPI并行，具有解决实际工程的潜力。
+**EITFWH-multi-node** 是一款面向气动声学/流动噪声计算的多节点并行软件，基于 **Ffowcs Williams–Hawkings (FW-H)** 方程设计，用于模拟非定常流动产生的声波辐射与传播。
 
-## [参考资料](https://github.com/EITAeroacoustics/EITFWH-Doc)
-- [环境搭建](https://github.com/EITAeroacoustics/EITFWH-Doc/blob/main/EITFWH_develop_note.pdf)
-- [用户手册](https://github.com/EITAeroacoustics/EITFWH-Doc/blob/main/EITFWH_userguide.pdf)
+软件可用于计算由不同类型声源机制（**单极子、偶极子、四极子**）引发的声波响应，适用于流动噪声数值模拟与工程应用场景。
 
-## 未来计划
-- Linux环境用CMake管理
-- GPU/DCU异构加速算法
-- 多极子展开等加速算法
-- 2.5维频域FW-H求解器
+---
+
+## 最新更新：多节点数据读取（NEW）
+
+本版本重点更新了 **多节点数据读取能力**，支持在多计算节点上对大规模非定常数据进行更高效的读入与分发，从而：
+
+- 支撑更大规模的工程算例数据处理（更长时间序列、更大面/体网格数据）
+- 缓解/突破单节点 CPU 内存瓶颈，降低对单节点内存容量的依赖
+- 提升并行后处理阶段的数据吞吐与整体可扩展性
+
+> 若你在计算中遇到“单节点内存不够、读数据太慢、数据量过大导致后处理卡住”等问题，本版本的更新主要就是为解决这些痛点。
+
+---
+
+## 主要特性
+
+- 基于 **FW-H 声学类比** 的非定常声辐射预测
+- 支持典型声源机制：
+  - **单极子（Monopole）**
+  - **偶极子（Dipole）**
+  - **四极子（Quadrupole）**
+- **C++** 开发的核心求解器，面向工程落地
+- 支持 **MPI 多节点并行**
+- **多节点数据读取增强（NEW）**
+  - 多节点并行读入/分发大规模时间序列数据
+  - 更适配大规模表面/体数据的声学后处理
+  - 降低单节点内存压力，提升可扩展性
+
+---
+
+## 参考资料（文档）
+
+文档仓库：  
+- https://github.com/EITAeroacoustics/EITFWH-Doc
+
+资料入口：
+- **环境搭建/开发说明**：  
+  https://github.com/EITAeroacoustics/EITFWH-Doc/blob/main/EITFWH_develop_note.pdf
+- **用户手册**：  
+  https://github.com/EITAeroacoustics/EITFWH-Doc/blob/main/EITFWH_userguide.pdf
+
+---
+
+## 未来计划（Roadmap）
+
+- Linux 环境使用 **CMake** 进行工程管理
+- **GPU/DCU 异构加速**算法
+- **2.5 维频域 FW-H** 求解器
+
+---
 
 ## 加入我们
-- 开发者团队诚邀各位专家学者一同推进项目发展、应用推广
-- 课题组招收博士生、博士后、访问学者、科研助理及实习生
+
+- 开发者团队诚邀各位专家学者共同推进项目发展与应用推广
+- 课题组招收：博士生、博士后、访问学者、科研助理及实习生
+
+---
 
 ## 联系方式
-- 维护人员: 王启星 
-- 开发人员: 王启星，邵明宇，姜汉博
-- 团队主页: [aeroacoustics.cn](aeroacoustics.cn) 
-- 电子邮箱: hjiang@eitech.edu.cn 
-- 通讯地址: 浙江省宁波市镇海区庄市街道同心路 568 号
+
+- **维护人员**：王启星  
+- **开发人员**：王启星，邵明宇，姜汉博  
+- **团队主页**：https://aeroacoustics.cn  
+- **电子邮箱**：hjiang@eitech.edu.cn  
+- **通讯地址**：浙江省宁波市镇海区庄市街道同心路 568 号
+
 
